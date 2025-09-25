@@ -1,11 +1,10 @@
+# Allow policy
 apiVersion: security.kubearmor.com/v1
 kind: KubeArmorPolicy
 metadata:
-  name: wisecow-zero-trust-allow
+  name: wisecow-allow
   namespace: default
 spec:
-  severity: 8
-  message: "Zero-trust allow-list for wisecow workload"
   selector:
     matchLabels:
       app: wisecow
@@ -13,14 +12,13 @@ spec:
     matchPaths:
       - path: /usr/games/fortune
       - path: /usr/games/cowsay
-      - path: /bin/bash
-      - path: /bin/nc
-      - path: /usr/bin/nc
   file:
     matchPaths:
-      - path: /appwisecow.sh
+      - path: /app/wisecow.sh
         readOnly: true
-      - path: /app
+    matchDirectories:
+      - dir: /app/
+        recursive: true
         readOnly: true
   network:
     matchProtocols:

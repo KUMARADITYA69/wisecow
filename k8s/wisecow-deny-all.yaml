@@ -1,0 +1,14 @@
+# Deny policy
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: wisecow-deny-all
+  namespace: default
+spec:
+  severity: 10
+  message: "Default deny - block everything else"
+  selector:
+    matchLabels:
+      app: wisecow
+  action: Block
+
