@@ -18,9 +18,9 @@ spec:
       - path: /usr/bin/nc
   file:
     matchPaths:
-      - path: /app/wisecow.sh
+      - path: /appwisecow.sh
         readOnly: true
-      - path: /app/
+      - path: /app
         readOnly: true
   network:
     matchProtocols:
